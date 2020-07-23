@@ -1,13 +1,13 @@
-ENV['RAILS_ENV'] ||= 'test'
-
 require 'simplecov'
 require 'simplecov-lcov'
 
 SimpleCov::Formatter::LcovFormatter.config.report_with_single_file = true
 SimpleCov.formatter = SimpleCov::Formatter::LcovFormatter
-SimpleCov.start 'rails' do
+SimpleCov.start do
   add_filter %r{\A\/test}
 end
+
+ENV['RAILS_ENV'] ||= 'test'
 
 require_relative '../config/environment'
 require 'rails/test_help'

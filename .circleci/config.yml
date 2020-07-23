@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  coveralls: coveralls/coveralls@1.0.6
+
 executors:
   ruby-base:
     docker:
@@ -32,6 +35,9 @@ jobs:
       - run:
           name: run dummy test
           command: bundle exec rails test
+      - coveralls/upload:
+          path_to_lcov: ./coverage/lcov/project.lcov
+
 
 workflows:
   version: 2
